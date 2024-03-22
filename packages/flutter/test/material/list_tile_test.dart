@@ -1833,7 +1833,7 @@ void main() {
       );
     }
 
-    Color textColor(Key key) => tester.state<TestTextState>(find.byKey(key)).textStyle.color!;
+    Color textColor(Key key) => tester.state<TestTextState>(find.byKey(key)).textStyle.color;
 
     await tester.pumpWidget(buildFrame());
     // Enabled color should be default bodyMedium color.
@@ -1880,7 +1880,7 @@ void main() {
       );
     }
 
-    Color iconColor(Key key) => tester.state<TestIconState>(find.byKey(key)).iconTheme.color!;
+    Color iconColor(Key key) => tester.state<TestIconState>(find.byKey(key)).iconTheme.color;
 
     await tester.pumpWidget(buildFrame(selected: true));
     expect(iconColor(leadingKey), colorScheme.primary);
@@ -2140,7 +2140,7 @@ void main() {
       );
     }
 
-    Color iconColor(Key key) => tester.state<TestIconState>(find.byKey(key)).iconTheme.color!;
+    Color iconColor(Key key) => tester.state<TestIconState>(find.byKey(key)).iconTheme.color;
 
     // Test disabled state.
     await tester.pumpWidget(buildFrame());
@@ -2199,8 +2199,8 @@ void main() {
     ).text.style;
 
     await tester.pumpWidget(buildFrame());
-    expect(getIconStyle(tester, leadingIcon.icon!)?.color, listTileIconColor);
-    expect(getIconStyle(tester, trailingIcon.icon!)?.color, listTileIconColor);
+    expect(getIconStyle(tester, leadingIcon.icon)?.color, listTileIconColor);
+    expect(getIconStyle(tester, trailingIcon.icon)?.color, listTileIconColor);
   });
 
   testWidgets('ListTile.dense does not throw assertion', (WidgetTester tester) async {
@@ -3662,7 +3662,7 @@ void main() {
         );
       }
 
-      Color iconColor(Key key) => tester.state<TestIconState>(find.byKey(key)).iconTheme.color!;
+      Color iconColor(Key key) => tester.state<TestIconState>(find.byKey(key)).iconTheme.color;
 
       await tester.pumpWidget(buildFrame(brightness: Brightness.light, selected: true));
       expect(iconColor(leadingKey), lightColorScheme.primary);

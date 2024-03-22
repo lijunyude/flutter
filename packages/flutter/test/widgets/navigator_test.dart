@@ -832,7 +832,7 @@ void main() {
     };
     await tester.pumpWidget(MaterialApp(
       onGenerateRoute: (RouteSettings settings) {
-        final SlideInOutPageRoute<dynamic> ret = SlideInOutPageRoute<dynamic>(bodyBuilder: builders[settings.name]!, settings: settings);
+        final SlideInOutPageRoute<dynamic> ret = SlideInOutPageRoute<dynamic>(bodyBuilder: builders[settings.name], settings: settings);
         routes[settings.name!] = ret;
         return ret;
       },
@@ -854,7 +854,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('C'), isOnstage);
     expect(routes['/A']!.secondaryAnimation!.value, equals(routes['/C']!.animation!.value));
-    final AnimationController controller = routes['/C']!.controller!;
+    final AnimationController controller = routes['/C']!.controller;
     controller.value = 1 - controller.value;
     expect(routes['/A']!.secondaryAnimation!.value, equals(routes['/C']!.animation!.value));
   });
@@ -883,7 +883,7 @@ void main() {
     };
     await tester.pumpWidget(MaterialApp(
       onGenerateRoute: (RouteSettings settings) {
-        final SlideInOutPageRoute<dynamic> ret = SlideInOutPageRoute<dynamic>(bodyBuilder: builders[settings.name]!, settings: settings);
+        final SlideInOutPageRoute<dynamic> ret = SlideInOutPageRoute<dynamic>(bodyBuilder: builders[settings.name], settings: settings);
         routes[settings.name!] = ret;
         return ret;
       },
@@ -924,7 +924,7 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(
       onGenerateRoute: (RouteSettings settings) {
-        return SlideInOutPageRoute<dynamic>(bodyBuilder: routes[settings.name]!);
+        return SlideInOutPageRoute<dynamic>(bodyBuilder: routes[settings.name]);
       },
     ));
     await tester.pumpAndSettle();
@@ -1068,7 +1068,7 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(
       onGenerateRoute: (RouteSettings settings) {
-        return SlideInOutPageRoute<dynamic>(bodyBuilder: routes[settings.name]!);
+        return SlideInOutPageRoute<dynamic>(bodyBuilder: routes[settings.name]);
       },
     ));
     await tester.pumpAndSettle();
@@ -1382,8 +1382,8 @@ void main() {
     late Route<dynamic> observedPreviousRoute;
     final TestObserver observer = TestObserver()
       ..onStartUserGesture = (Route<dynamic>? route, Route<dynamic>? previousRoute) {
-        observedRoute = route!;
-        observedPreviousRoute = previousRoute!;
+        observedRoute = route;
+        observedPreviousRoute = previousRoute;
       };
 
     await tester.pumpWidget(MaterialApp(
@@ -1483,7 +1483,7 @@ void main() {
       navigatorKey: key,
       onGenerateRoute: (RouteSettings settings) {
         assert(nextRoute != null);
-        final Route<dynamic> result = nextRoute!;
+        final Route<dynamic> result = nextRoute;
         nextRoute = null;
         return result;
       },
@@ -1955,7 +1955,7 @@ void main() {
 
     final Route<dynamic> oldRoute = ModalRoute.of(
       tester.element(find.byKey(const ValueKey<String>('/A'), skipOffstage: false)),
-    )!;
+    );
     final Route<void> newRoute = NoAnimationPageRoute(
       pageBuilder: (_) => Container(key: const ValueKey<String>('/C')),
     );
@@ -2226,7 +2226,7 @@ void main() {
 
     expect(find.text('Route: 3'), findsOneWidget);
     expect(find.text('Route: 4'), findsOneWidget);
-    final Animation<double> route4Entry = routeNameToContext['4']!.animation!;
+    final Animation<double> route4Entry = routeNameToContext['4']!.animation;
     expect(route4Entry.value, 0.0); // Entry animation has not started.
 
     await tester.pump(kFourTenthsOfTheTransitionDuration);
@@ -2949,7 +2949,7 @@ void main() {
         ),
       );
       expect(find.text('page2'), findsOneWidget);
-      final ModalRoute<void> route = ModalRoute.of(tester.element(find.text('page2')))!;
+      final ModalRoute<void> route = ModalRoute.of(tester.element(find.text('page2')));
       bool entryRemoved = false;
       route.addLocalHistoryEntry(LocalHistoryEntry(onRemove: () => entryRemoved = true));
       expect(route.willHandlePopInternally, true);
@@ -3004,7 +3004,7 @@ void main() {
           ),
         ),
       );
-      final ModalRoute<void> route = ModalRoute.of(tester.element(find.text('page2')))!;
+      final ModalRoute<void> route = ModalRoute.of(tester.element(find.text('page2')));
       // PopScope only prevents user trigger action, e.g. Navigator.maybePop.
       // The page can still be popped by the system if it needs to.
       expect(route.willHandlePopInternally, false);
@@ -4091,7 +4091,7 @@ void main() {
                   settings: settings,
                   pageBuilder: (BuildContext _, Animation<double> __,
                       Animation<double> ___) {
-                    return routes[settings.name!]!;
+                    return routes[settings.name!];
                   },
                 );
               },
@@ -4168,7 +4168,7 @@ void main() {
                   settings: settings,
                   pageBuilder: (BuildContext _, Animation<double> __,
                       Animation<double> ___) {
-                    return routes[settings.name!]!;
+                    return routes[settings.name!];
                   },
                 );
               },
@@ -5189,7 +5189,7 @@ class AlwaysRemoveTransitionDelegate extends TransitionDelegate<void> {
         return;
       }
 
-      final RouteTransitionRecord exitingPageRoute = locationToExitingPageRoute[location]!;
+      final RouteTransitionRecord exitingPageRoute = locationToExitingPageRoute[location];
       if (exitingPageRoute.isWaitingForExitingDecision) {
         final bool hasPagelessRoute = pageRouteToPagelessRoutes.containsKey(exitingPageRoute);
         exitingPageRoute.markForRemove();

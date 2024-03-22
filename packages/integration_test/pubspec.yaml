@@ -48,3 +48,6 @@ flutter:
         pluginClass: IntegrationTestPlugin
 
 # PUBSPEC CHECKSUM: 4059
+dev_dependencies:
+  integration_test_example: any
+  test: any

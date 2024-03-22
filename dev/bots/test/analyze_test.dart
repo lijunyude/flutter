@@ -11,7 +11,6 @@ import '../custom_rules/analyze.dart';
 import '../custom_rules/no_double_clamp.dart';
 import '../custom_rules/no_stop_watches.dart';
 import '../utils.dart';
-import 'common.dart';
 
 typedef AsyncVoidCallback = Future<void> Function();
 

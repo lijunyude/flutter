@@ -409,7 +409,7 @@ void main() {
     await tester.tap(find.text('X'));
     await tester.pumpAndSettle(const Duration(seconds: 1));
 
-    final InputDecoration hourDecoration = _textField(tester, '7').decoration!;
+    final InputDecoration hourDecoration = _textField(tester, '7').decoration;
     expect(hourDecoration.filled, true);
     expect(
       hourDecoration.fillColor,
@@ -451,7 +451,7 @@ void main() {
     await tester.tap(find.text('X'));
     await tester.pumpAndSettle(const Duration(seconds: 1));
 
-    final InputDecoration hourDecoration = _textField(tester, '7').decoration!;
+    final InputDecoration hourDecoration = _textField(tester, '7').decoration;
     expect(hourDecoration.filled, true);
     expect(hourDecoration.fillColor, defaultTheme.colorScheme.surfaceVariant);
     expect(
@@ -743,7 +743,7 @@ void main() {
     await tester.tap(find.text('X'));
     await tester.pumpAndSettle(const Duration(seconds: 1));
 
-    final InputDecoration hourDecoration = _textField(tester, '7').decoration!;
+    final InputDecoration hourDecoration = _textField(tester, '7').decoration;
     expect(hourDecoration.filled, timePickerTheme.inputDecorationTheme!.filled);
     expect(hourDecoration.fillColor, timePickerTheme.inputDecorationTheme!.fillColor);
     expect(hourDecoration.enabledBorder, timePickerTheme.inputDecorationTheme!.enabledBorder);
@@ -760,7 +760,7 @@ void main() {
     await tester.tap(find.text('X'));
     await tester.pumpAndSettle(const Duration(seconds: 1));
 
-    final InputDecoration hourDecoration = _textField(tester, '7').decoration!;
+    final InputDecoration hourDecoration = _textField(tester, '7').decoration;
     expect(hourDecoration.fillColor?.value, timePickerTheme.hourMinuteColor?.value);
   });
 
@@ -800,8 +800,8 @@ void main() {
   });
 }
 
-final Color _selectedColor = Colors.green[100]!;
-final Color _unselectedColor = Colors.green[200]!;
+final Color _selectedColor = Colors.green[100];
+final Color _unselectedColor = Colors.green[200];
 
 TimePickerThemeData _timePickerTheme({bool includeInputDecoration = false}) {
   Color getColor(Set<MaterialState> states) {
@@ -908,5 +908,5 @@ final Finder findDialPaint = find.descendant(
 );
 
 ButtonStyle _actionButtonStyle(WidgetTester tester, String text) {
-  return tester.widget<TextButton>(find.widgetWithText(TextButton, text)).style!;
+  return tester.widget<TextButton>(find.widgetWithText(TextButton, text)).style;
 }

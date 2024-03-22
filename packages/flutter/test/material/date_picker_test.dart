@@ -1324,7 +1324,7 @@ void main() {
     testWidgets('Default InputDecoration', (WidgetTester tester) async {
       await prepareDatePicker(tester, (Future<DateTime?> date) async {
         final InputDecoration decoration = tester.widget<TextField>(
-          find.byType(TextField)).decoration!;
+          find.byType(TextField)).decoration;
         expect(decoration.border, const OutlineInputBorder());
         expect(decoration.filled, false);
         expect(decoration.hintText, 'mm/dd/yyyy');
@@ -2199,7 +2199,7 @@ void main() {
       testWidgets('Default InputDecoration', (WidgetTester tester) async {
         await prepareDatePicker(tester, (Future<DateTime?> date) async {
           final InputDecoration decoration = tester.widget<TextField>(
-            find.byType(TextField)).decoration!;
+            find.byType(TextField)).decoration;
           expect(decoration.border, const UnderlineInputBorder());
           expect(decoration.filled, false);
           expect(decoration.hintText, 'mm/dd/yyyy');

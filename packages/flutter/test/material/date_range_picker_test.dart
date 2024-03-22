@@ -816,7 +816,7 @@ void main() {
     testWidgets('Default InputDecoration', (WidgetTester tester) async {
       await preparePicker(tester, (Future<DateTimeRange?> range) async {
         final InputDecoration startDateDecoration = tester.widget<TextField>(
-          find.byType(TextField).first).decoration!;
+          find.byType(TextField).first).decoration;
         expect(startDateDecoration.border, const OutlineInputBorder());
         expect(startDateDecoration.filled, false);
         expect(startDateDecoration.hintText, 'mm/dd/yyyy');
@@ -824,7 +824,7 @@ void main() {
         expect(startDateDecoration.errorText, null);
 
         final InputDecoration endDateDecoration = tester.widget<TextField>(
-          find.byType(TextField).last).decoration!;
+          find.byType(TextField).last).decoration;
         expect(endDateDecoration.border, const OutlineInputBorder());
         expect(endDateDecoration.filled, false);
         expect(endDateDecoration.hintText, 'mm/dd/yyyy');
@@ -1617,7 +1617,7 @@ void main() {
       testWidgets('Default InputDecoration', (WidgetTester tester) async {
         await preparePicker(tester, (Future<DateTimeRange?> range) async {
           final InputDecoration startDateDecoration = tester.widget<TextField>(
-            find.byType(TextField).first).decoration!;
+            find.byType(TextField).first).decoration;
           expect(startDateDecoration.border, const UnderlineInputBorder());
           expect(startDateDecoration.filled, false);
           expect(startDateDecoration.hintText, 'mm/dd/yyyy');
@@ -1625,7 +1625,7 @@ void main() {
           expect(startDateDecoration.errorText, null);
 
           final InputDecoration endDateDecoration = tester.widget<TextField>(
-            find.byType(TextField).last).decoration!;
+            find.byType(TextField).last).decoration;
           expect(endDateDecoration.border, const UnderlineInputBorder());
           expect(endDateDecoration.filled, false);
           expect(endDateDecoration.hintText, 'mm/dd/yyyy');

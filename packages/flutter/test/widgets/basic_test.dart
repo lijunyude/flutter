@@ -21,7 +21,7 @@ import 'semantics_tester.dart';
 void main() {
   group('RawImage', () {
     testWidgets('properties', (WidgetTester tester) async {
-      final ui.Image image1 = (await tester.runAsync<ui.Image>(() => createTestImage()))!;
+      final ui.Image image1 = await tester.runAsync<ui.Image>(() => createTestImage());
 
       await tester.pumpWidget(
         Directionality(
@@ -49,7 +49,7 @@ void main() {
       expect(renderObject.filterQuality, FilterQuality.low);
       expect(renderObject.isAntiAlias, false);
 
-      final ui.Image image2 = (await tester.runAsync<ui.Image>(() => createTestImage(width: 2, height: 2)))!;
+      final ui.Image image2 = await tester.runAsync<ui.Image>(() => createTestImage(width: 2, height: 2));
       const String debugImageLabel = 'debugImageLabel';
       const double width = 1;
       const double height = 1;

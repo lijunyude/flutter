@@ -353,7 +353,7 @@ void main() {
           isFalse,
         );
         RenderSimpleBuilderTableViewport viewport = getViewport(tester, checkBoxKey) as RenderSimpleBuilderTableViewport;
-        TestExtendedParentData parentData = viewport.parentDataOf(viewport.testGetChildFor(firstCell)!);
+        TestExtendedParentData parentData = viewport.parentDataOf(viewport.testGetChildFor(firstCell));
         // Check parent data from both ParentDataWidgets
         expect(parentData.testValue, 20);
         expect(parentData.keepAlive, isFalse);
@@ -381,7 +381,7 @@ void main() {
           isTrue,
         );
         viewport = getViewport(tester, checkBoxKey) as RenderSimpleBuilderTableViewport;
-        parentData = viewport.parentDataOf(viewport.testGetChildFor(firstCell)!);
+        parentData = viewport.parentDataOf(viewport.testGetChildFor(firstCell));
         // Check parent data from both ParentDataWidgets
         expect(parentData.testValue, 20);
         expect(parentData.keepAlive, isTrue);
@@ -400,7 +400,7 @@ void main() {
           isTrue,
         );
         viewport = getViewport(tester, checkBoxKey) as RenderSimpleBuilderTableViewport;
-        parentData = viewport.parentDataOf(viewport.testGetChildFor(firstCell)!);
+        parentData = viewport.parentDataOf(viewport.testGetChildFor(firstCell));
         // Check parent data from both ParentDataWidgets
         expect(parentData.testValue, 20);
         expect(parentData.keepAlive, isTrue);
@@ -419,7 +419,7 @@ void main() {
           isTrue,
         );
         viewport = getViewport(tester, checkBoxKey) as RenderSimpleBuilderTableViewport;
-        parentData = viewport.parentDataOf(viewport.testGetChildFor(firstCell)!);
+        parentData = viewport.parentDataOf(viewport.testGetChildFor(firstCell));
         // Check parent data from both ParentDataWidgets
         expect(parentData.testValue, 20);
         expect(parentData.keepAlive, isTrue);
@@ -1726,11 +1726,11 @@ void main() {
       expect(viewport.mainAxis, Axis.vertical);
       // first child
       expect(
-        parentDataOf(viewport.firstChild!).vicinity,
+        parentDataOf(viewport.firstChild).vicinity,
         const ChildVicinity(xIndex: 0, yIndex: 0),
       );
       expect(
-        parentDataOf(viewport.childAfter(viewport.firstChild!)!).vicinity,
+        parentDataOf(viewport.childAfter(viewport.firstChild!)).vicinity,
         const ChildVicinity(xIndex: 1, yIndex: 0),
       );
       expect(
@@ -1739,7 +1739,7 @@ void main() {
       );
       // last child
       expect(
-        parentDataOf(viewport.lastChild!).vicinity,
+        parentDataOf(viewport.lastChild).vicinity,
         const ChildVicinity(xIndex: 4, yIndex: 3),
       );
       expect(
@@ -1747,7 +1747,7 @@ void main() {
         isNull,
       );
       expect(
-        parentDataOf(viewport.childBefore(viewport.lastChild!)!).vicinity,
+        parentDataOf(viewport.childBefore(viewport.lastChild!)).vicinity,
         const ChildVicinity(xIndex: 3, yIndex: 3),
       );
 
@@ -1761,11 +1761,11 @@ void main() {
       expect(viewport.mainAxis, Axis.horizontal);
       // first child
       expect(
-        parentDataOf(viewport.firstChild!).vicinity,
+        parentDataOf(viewport.firstChild).vicinity,
         const ChildVicinity(xIndex: 0, yIndex: 0),
       );
       expect(
-        parentDataOf(viewport.childAfter(viewport.firstChild!)!).vicinity,
+        parentDataOf(viewport.childAfter(viewport.firstChild!)).vicinity,
         const ChildVicinity(xIndex: 0, yIndex: 1),
       );
       expect(
@@ -1774,7 +1774,7 @@ void main() {
       );
       // last child
       expect(
-        parentDataOf(viewport.lastChild!).vicinity,
+        parentDataOf(viewport.lastChild).vicinity,
         const ChildVicinity(xIndex: 4, yIndex: 3),
       );
       expect(
@@ -1782,7 +1782,7 @@ void main() {
         isNull,
       );
       expect(
-        parentDataOf(viewport.childBefore(viewport.lastChild!)!).vicinity,
+        parentDataOf(viewport.childBefore(viewport.lastChild!)).vicinity,
         const ChildVicinity(xIndex: 4, yIndex: 2),
       );
     }, variant: TargetPlatformVariant.all());
@@ -1820,13 +1820,13 @@ void main() {
       // first child
       // parentData is computed correctly - normal axes
       // - layoutOffset, paintOffset, isVisible, ChildVicinity
-      TwoDimensionalViewportParentData childParentData = parentDataOf(viewport.firstChild!);
+      TwoDimensionalViewportParentData childParentData = parentDataOf(viewport.firstChild);
       expect(childParentData.vicinity, const ChildVicinity(xIndex: 0, yIndex: 0));
       expect(childParentData.isVisible, isTrue);
       expect(childParentData.paintOffset, Offset.zero);
       expect(childParentData.layoutOffset, Offset.zero);
       // The last child is in the cache extent, and should not be visible.
-      childParentData = parentDataOf(viewport.lastChild!);
+      childParentData = parentDataOf(viewport.lastChild);
       expect(childParentData.vicinity, const ChildVicinity(xIndex: 5, yIndex: 5));
       expect(childParentData.isVisible, isFalse);
       expect(childParentData.paintOffset, const Offset(1000.0, 1000.0));
@@ -1842,13 +1842,13 @@ void main() {
 
       viewport = getViewport(tester, childKeys.values.first);
 
-      childParentData = parentDataOf(viewport.firstChild!);
+      childParentData = parentDataOf(viewport.firstChild);
       expect(childParentData.vicinity, const ChildVicinity(xIndex: 0, yIndex: 0));
       expect(childParentData.isVisible, isTrue);
       expect(childParentData.paintOffset, const Offset(0.0, 400.0));
       expect(childParentData.layoutOffset, Offset.zero);
       // The last child is in the cache extent, and should not be visible.
-      childParentData = parentDataOf(viewport.lastChild!);
+      childParentData = parentDataOf(viewport.lastChild);
       expect(childParentData.vicinity, const ChildVicinity(xIndex: 5, yIndex: 5));
       expect(childParentData.isVisible, isFalse);
       expect(childParentData.paintOffset, const Offset(1000.0, -600.0));
@@ -1863,13 +1863,13 @@ void main() {
 
       viewport = getViewport(tester, childKeys.values.first);
 
-      childParentData = parentDataOf(viewport.firstChild!);
+      childParentData = parentDataOf(viewport.firstChild);
       expect(childParentData.vicinity, const ChildVicinity(xIndex: 0, yIndex: 0));
       expect(childParentData.isVisible, isTrue);
       expect(childParentData.paintOffset, const Offset(600.0, 0.0));
       expect(childParentData.layoutOffset, Offset.zero);
       // The last child is in the cache extent, and should not be visible.
-      childParentData = parentDataOf(viewport.lastChild!);
+      childParentData = parentDataOf(viewport.lastChild);
       expect(childParentData.vicinity, const ChildVicinity(xIndex: 5, yIndex: 5));
       expect(childParentData.isVisible, isFalse);
       expect(childParentData.paintOffset, const Offset(-400.0, 1000.0));
@@ -1885,13 +1885,13 @@ void main() {
 
       viewport = getViewport(tester, childKeys.values.first);
 
-      childParentData = parentDataOf(viewport.firstChild!);
+      childParentData = parentDataOf(viewport.firstChild);
       expect(childParentData.vicinity, const ChildVicinity(xIndex: 0, yIndex: 0));
       expect(childParentData.isVisible, isTrue);
       expect(childParentData.paintOffset, const Offset(600.0, 400.0));
       expect(childParentData.layoutOffset, Offset.zero);
       // The last child is in the cache extent, and should not be visible.
-      childParentData = parentDataOf(viewport.lastChild!);
+      childParentData = parentDataOf(viewport.lastChild);
       expect(childParentData.vicinity, const ChildVicinity(xIndex: 5, yIndex: 5));
       expect(childParentData.isVisible, isFalse);
       expect(childParentData.paintOffset, const Offset(-400.0, -600.0));
@@ -1914,7 +1914,7 @@ void main() {
 
       viewport = getViewport(tester, childKeys.values.first);
 
-      childParentData = parentDataOf(viewport.firstChild!);
+      childParentData = parentDataOf(viewport.firstChild);
       expect(childParentData.vicinity, const ChildVicinity(xIndex: 0, yIndex: 0));
       expect(childParentData.isVisible, isTrue);
       expect(childParentData.paintOffset, const Offset(-50.0, -50.0));
